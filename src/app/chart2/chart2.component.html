@@ -1,0 +1,26 @@
+<div> 
+    <div style="display: block">
+        <canvas baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+            ></canvas>
+    </div>
+    <form>
+        <div class="form-group">
+            <label for ="minValue">Minimum: </label>
+            <input ngModel name="minValue" #minValue="ngModel"  id="minValue" type="number" step="any" placeholder="Enter Minimum">
+        </div>
+        <div class="form-group">
+            <label for="maxValue">Maximum: </label>
+            <input ngModel name="maxValue" #maxValue="ngModel" type="number" id="maxValue" step="any" placeholder="Enter Maximum">
+        </div>
+        <button (click)="log(minValue, maxValue)" class="btn btn-primary">Submit</button>
+        
+    </form>
+    
+
+    
+</div>

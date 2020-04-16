@@ -1,16 +1,31 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { ChartsModule } from 'ng2-charts';
+import { chartjsannotations } from 'chartjs-plugin-annotation';
+import { FormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TreeComponent } from './tree/tree.component';
+import { Chart1Component } from './chart1/chart1.component';
+import { Chart2Component } from './chart2/chart2.component';
+import { Chart3Component } from './chart3/chart3.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TreeComponent,
+    Chart1Component,
+    Chart2Component,
+    Chart3Component
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ChartsModule,
+    FormsModule
+   
   ],
   providers: [],
   bootstrap: [AppComponent]

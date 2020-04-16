@@ -1,0 +1,36 @@
+
+<div> 
+    <!-- 
+        TODO: dropdown met keuze van broeikassen, weet nog niet of deze in per grafiek, of in app.component.html gaat 
+    -->
+    <!-- 
+        Het displayen van de graph.
+    -->
+    <div style="display: block">
+        <canvas baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+            ></canvas>
+    </div>
+    <!-- 
+        De form onder de graph, invullen min max limieten. Bij klikken op Sumbit wordt de functie "onClick" aan geroepen.
+    -->
+    <form>
+        <div class="form-group">
+            <label for ="minValue">Minimum: </label>
+            <input ngModel name="minValue" #minValue="ngModel"  id="minValue" type="number" step="any" placeholder="Enter Minimum">
+        </div>
+        <div class="form-group">
+            <label for="maxValue">Maximum: </label>
+            <input ngModel name="maxValue" #maxValue="ngModel" type="number" id="maxValue" step="any" placeholder="Enter Maximum">
+        </div>
+        <button (click)="onClick(minValue, maxValue)" class="btn btn-primary">Submit</button>
+        
+    </form>
+   
+
+    
+</div>
