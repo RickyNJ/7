@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
 
 export class Chart1Component implements OnInit {
   /** Data die uit de database gehaald zou moeten worden */
-  data = 10; 
+  data = 110; 
   max = 100;
   min = 5;  
  
