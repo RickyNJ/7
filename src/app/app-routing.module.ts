@@ -7,7 +7,8 @@ import { Chart3Component } from './chart3/chart3.component';
 
 const routes: Routes = [
   
-  
+  /**Hier gebeurt de routing van de applicatie, iedere rout krijgt een naam en een component waar naartoe het verwijst
+   */
   {path: 'tree', component: TreeComponent},
   {path: 'chart1', component: Chart1Component},
   {path: 'chart2', component: Chart2Component},

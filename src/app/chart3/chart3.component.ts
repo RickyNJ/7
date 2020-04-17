@@ -7,6 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Chart3Component implements OnInit {
 
+  data = 30; 
+  max = 100;
+  min = 5;  
+
+  colorPicker(data, max, min){
+    if(data>max || data<min){
+      return '#ff0000';
+    }
+    else{
+      return '#00ff11';
+    }
+  }
+
   public barChartOptions = {
     scaleShowHorizontalLines: false,
     responsive: true
@@ -17,12 +30,14 @@ export class Chart3Component implements OnInit {
   public barChartLegend = false;
 
   public barChartData = [
-    {data: [30], label: 'Moisture'}
+    {data: this.data, label: 'Moisture', backgroundColor: this.colorPicker(this.data, this.max, this.min)}
 
   ];
 
-  log(min, max){
+  onClick(min, max){
     console.log(min.value, max.value);
+    this.max = max.value;
+    this.min = min.value;
   }
 
   constructor() { }
