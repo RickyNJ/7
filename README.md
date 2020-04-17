@@ -3,13 +3,18 @@
 de files met comments:
 
 app.component.html, app.component.ts, app-routing.module.ts
+
 chart1.component.html, chart1.component.ts
 
 
 de grootste TODO's:
+
 inlog systeem
+
 database connectie
+
 home page met kleine overview
+
 FKING ANNOTATIONS
 
 
