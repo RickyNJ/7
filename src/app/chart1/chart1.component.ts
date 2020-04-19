@@ -46,7 +46,7 @@ export class Chart1Component implements OnInit {
   public barChartData = [
     this.chartUpdate()
     
-    /**{data: this.data, label: 'Temperature', backgroundColor: this.colorPicker(this.data, this.max, this.min)}*/
+   
   ];
 
   chartUpdate(){
