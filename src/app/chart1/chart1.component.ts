@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵɵcontainerRefreshEnd } from '@angular/core';
 import * as ChartAnnotation from 'chartjs-plugin-annotation';
 import { FormsModule } from '@angular/forms';
+import { BehaviorSubject } from 'rxjs'
+import { ChartService } from '../chart.service';
+
 
 @Component({
   selector: 'app-chart1',
@@ -10,10 +13,13 @@ import { FormsModule } from '@angular/forms';
 
 export class Chart1Component implements OnInit {
   /** Data die uit de database gehaald zou moeten worden */
-  data = 110; 
-  max = 100;
-  min = 5;  
- 
+  public data = this._chartService.getData1();
+  
+  private max = this._chartService.getMax1;
+  private min = this._chartService.getMin1;  
+
+  
+  
   /**Functie die kijkt of de data binnen de limiet ligt en de passende kleur terug stuurd */
   colorPicker(data, max, min){
     if(data>max || data<min){
@@ -34,28 +40,46 @@ export class Chart1Component implements OnInit {
       value: this.min
     }]
   };
-
+  
   public barChartLabels = ['Teperature'];
   public barChartType = 'horizontalBar';
   public barChartLegend = false;
   
   /**De daadwerkelijke bar met bijbehorende data wordt hier aangemaakt */
   public barChartData = [
-    {data: this.data, label: 'Temperature', backgroundColor: this.colorPicker(this.data, this.max, this.min)}
+    this.chartUpdate()
+    
+    /**{data: this.data, label: 'Temperature', backgroundColor: this.colorPicker(this.data, this.max, this.min)}*/
   ];
+
+  chartUpdate(){
+    console.log(this.data, this._chartService.getMax1(), this._chartService.getMin1());
+    
+    return {data: this.data, label: 'Temperature', backgroundColor: this.colorPicker(this.data, this._chartService.getMax1(), this._chartService.getMin1())} 
+    
+  }
 
   /**De buttonfunctie, hier wordt de min en max overschreven, dit kan vervangen worden door een functie die de gegevens binnen de DB vervangt */
   onClick(min, max){
-    console.log(min.value, max.value);
-    this.max = max.value;
-    this.min = min.value;    
+    
+    this._chartService.setMax1(max.value);
+    this._chartService.setMin1(min.value);   
+    
+    this.barChartData.pop();
+    this.barChartData.push(this.chartUpdate());
+    console.log(this.barChartData)
+    
+    
     /**TO DO: het updaten van de chart */
   }
   
-  constructor() { }
+  
+
+  constructor(private _chartService: ChartService) { }
 
   ngOnInit() {
-
+    
   }
 
 }
+

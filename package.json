@@ -24,6 +24,8 @@
     "chartjs-plugin-annotation": "^0.5.7",
     "jquery": "^3.5.0",
     "ng2-charts": "^2.3.0",
+    "ngstorage": "^0.3.11",
+    "ngx-webstorage-service": "^4.1.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

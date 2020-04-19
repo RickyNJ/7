@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChartService } from '../chart.service';
 
 @Component({
   selector: 'app-chart3',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Chart3Component implements OnInit {
 
-  data = 30; 
+  data = this._chartService.getData3(); 
   max = 100;
   min = 5;  
 
@@ -40,7 +41,7 @@ export class Chart3Component implements OnInit {
     this.min = min.value;
   }
 
-  constructor() { }
+  constructor(private _chartService: ChartService) { }
 
   ngOnInit(): void {
   }
