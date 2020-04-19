@@ -8,9 +8,10 @@ import { ChartService } from '../chart.service';
 })
 export class Chart2Component implements OnInit {
 
-  data = this._chartService.getData2(); 
-  max = 100;
-  min = 5;  
+  public data = this._chartService.getData2();
+  
+  private max = this._chartService.getMax2;
+  private min = this._chartService.getMin2;   
 
   colorPicker(data, max, min){
     if(data>max || data<min){
@@ -31,13 +32,26 @@ export class Chart2Component implements OnInit {
   public barChartLegend = false;
 
   public barChartData = [
-    {data: this.data, label: 'Light Level', backgroundColor: this.colorPicker(this.data, this.max, this.min)}
+    this.chartUpdate()
+    
+   
   ];
 
+  chartUpdate(){
+    console.log(this.data, this._chartService.getMax1(), this._chartService.getMin1());
+    
+    return {data: this.data, label: 'Temperature', backgroundColor: this.colorPicker(this.data, this._chartService.getMax1(), this._chartService.getMin1())} 
+    
+  }
+
   onClick(min, max){
-    console.log(min.value, max.value);
-    this.max = max.value;
-    this.min = min.value;
+    
+    this._chartService.setMax1(max.value);
+    this._chartService.setMin1(min.value);   
+    
+    this.barChartData.pop();
+    this.barChartData.push(this.chartUpdate());
+    console.log(this.barChartData)
   }
 
   constructor(private _chartService: ChartService) { }

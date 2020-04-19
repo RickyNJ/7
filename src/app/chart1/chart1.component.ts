@@ -34,14 +34,11 @@ export class Chart1Component implements OnInit {
   public barChartOptions = {
     scaleShowHorizontalLines: false,
     responsive: true,
-    /**hier zou de annotation plugin zijn werk moeten doen */
-    annotations: [{
-      type: 'line',
-      value: this.min
-    }]
+    
+    
   };
   
-  public barChartLabels = ['Teperature'];
+  public barChartLabels = ['Temperature'];
   public barChartType = 'horizontalBar';
   public barChartLegend = false;
   
